@@ -5,5 +5,5 @@ export const metadata: Metadata = {
 }
 
 export default function Feed() {
-  return <main></main>
+  return <div></div>
 }
