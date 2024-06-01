@@ -10,7 +10,7 @@ const Navbar = () => {
       <span className="w-full h-[2px] block bg-background-100"></span>
       <nav>
         <ul className="flex flex-col gap-1 w-full">
-          <NavbarItem url="/">
+          <NavbarItem url="/feed">
             <Home size={24} />
             Feed
           </NavbarItem>

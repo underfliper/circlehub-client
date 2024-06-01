@@ -1,9 +1,9 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Home | CircleHub',
+  title: 'Feed | CircleHub',
 }
 
-export default function Home() {
+export default function Feed() {
   return <div></div>
 }
