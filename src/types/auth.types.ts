@@ -24,3 +24,11 @@ export interface AuthResponse {
 export interface AuthUserWithTokens extends AuthUser {
   tokens: AuthTokens
 }
+
+export interface SignUpData {
+  firstName: string
+  lastName: string
+  username: string
+  email: string
+  password: string
+}

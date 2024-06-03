@@ -16,7 +16,7 @@ const Form: FC<FormProps> = ({
   return (
     <form
       className={cn(
-        'flex flex-col gap-4 p-4 bg-background-50 rounded-xl',
+        'flex flex-col gap-2 p-4 bg-background-50 rounded-xl',
         className,
       )}
       {...props}>

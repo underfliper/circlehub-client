@@ -3,6 +3,7 @@ import {
   AuthResponse,
   AuthUserWithTokens,
   Credentials,
+  SignUpData,
 } from '@/types/auth.types'
 
 class AuthService {
@@ -17,6 +18,16 @@ class AuthService {
       const { user, tokens } = data
 
       return { ...user, tokens: { ...tokens } }
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async SignUp(data: SignUpData) {
+    try {
+      const response = await $fetch.post('/auth/signup', false, data)
+
+      return response
     } catch (error) {
       throw error
     }

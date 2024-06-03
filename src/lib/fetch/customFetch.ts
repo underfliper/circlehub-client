@@ -42,12 +42,19 @@ class CustomFetch {
       const data = await response.json()
 
       if (!response.ok) {
-        throw new ApiError(data.statusCode, data.message, data.error)
+        throw new ApiError(
+          response.ok,
+          data.statusCode,
+          data.message,
+          data.error,
+          data.target,
+        )
       }
 
       return {
         data,
         status: response.status,
+        ok: response.ok,
       }
     } catch (error) {
       throw error
