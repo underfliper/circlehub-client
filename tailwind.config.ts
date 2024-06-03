@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import defaultTheme from 'tailwindcss/defaultTheme'
 
 const config: Config = {
   content: [
@@ -64,6 +65,10 @@ const config: Config = {
         'accent-800': '#214AAC',
         'accent-900': '#204188',
         'accent-950': '#182953',
+      },
+      transitionProperty: {
+        DEFAULT: `${defaultTheme.transitionProperty.DEFAULT}, outline-color`,
+        colors: `${defaultTheme.transitionProperty.colors}, outline-color`,
       },
     },
   },

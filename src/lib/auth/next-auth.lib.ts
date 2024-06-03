@@ -30,6 +30,7 @@ const refreshToken = async (token: JWT): Promise<JWT> => {
 }
 
 export const nextAuthOptions: NextAuthOptions = {
+  pages: { signIn: '/signin' },
   providers: [
     CredentialsProvider({
       name: 'Credentials',

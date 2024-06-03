@@ -25,10 +25,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(inter.className, 'bg-background-100 text-txt-950')}>
+      <body
+        className={cn(
+          inter.className,
+          'flex flex-col h-dvh bg-background-100 text-txt-950',
+        )}>
         <Providers>
           <Header />
-          <main className="pt-24">{children}</main>
+          <main className="mt-20 pt-4 flex-auto">{children}</main>
         </Providers>
       </body>
     </html>

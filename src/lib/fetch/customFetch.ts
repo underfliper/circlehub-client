@@ -1,5 +1,6 @@
 import { getServerSession } from 'next-auth'
 import { nextAuthOptions } from '../auth/next-auth.lib'
+import { ApiError, ApiResponse } from '@/types/fetch.type'
 
 class CustomFetch {
   private API_URL = process.env.NEXT_PUBLIC_API_URL as string
@@ -20,7 +21,7 @@ class CustomFetch {
     path: string,
     isAuth: boolean,
     options?: RequestInit,
-  ) {
+  ): Promise<ApiResponse<T>> {
     const url = `${this.API_URL}${path}`
 
     const authorizationHeader: HeadersInit = isAuth
@@ -38,7 +39,11 @@ class CustomFetch {
         ...options,
       })
 
-      const data = (await response.json()) as T
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new ApiError(data.statusCode, data.message, data.error)
+      }
 
       return {
         data,
