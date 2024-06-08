@@ -8,9 +8,10 @@ import { AuthTokens } from '@/types/auth.types'
 
 const isTokenExpire = (token: string) => {
   const { exp } = jwtDecode<{ exp: number }>(token)
+  const expire = exp * 1000
   const now = Date.now()
 
-  return exp * 1000 < now
+  return expire < now
 }
 
 const refreshToken = async (token: JWT): Promise<JWT> => {
@@ -65,7 +66,11 @@ export const nextAuthOptions: NextAuthOptions = {
 
       const { user: data } = token
 
-      if (!isTokenExpire(data.tokens.accessToken)) return token
+      const isExpire: boolean = isTokenExpire(data.tokens.accessToken)
+
+      if (!isExpire) {
+        return token
+      }
 
       return refreshToken(token)
     },

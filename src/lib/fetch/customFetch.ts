@@ -1,4 +1,5 @@
 import { getServerSession } from 'next-auth'
+import { getSession } from 'next-auth/react'
 import { nextAuthOptions } from '../auth/next-auth.lib'
 import { ApiError, ApiResponse } from '@/types/fetch.type'
 
@@ -7,8 +8,16 @@ class CustomFetch {
 
   constructor(private defaultHeaders: HeadersInit = {}) {}
 
+  private async getSessionUniversal() {
+    if (typeof window === 'undefined') {
+      return await getServerSession(nextAuthOptions)
+    } else {
+      return await getSession()
+    }
+  }
+
   private async getAccessToken(): Promise<string | null> {
-    const session = await getServerSession(nextAuthOptions)
+    const session = await this.getSessionUniversal()
 
     if (!session) return null
 
