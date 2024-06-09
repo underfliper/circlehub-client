@@ -1,13 +1,10 @@
 'use client'
 import React, { FC } from 'react'
-import { RedirectType, redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import UserCard from '../userCard/UserCard'
-import { PostData } from '@/types/post.type'
-import { useRouter } from 'next/navigation'
-import PostControl from './PostControl'
-import { Bookmark, Heart, MessageCircle, Repeat } from 'lucide-react'
 import PostControls from './PostControls'
+import { PostData } from '@/types/post.type'
 
 interface PostProps {
   data: PostData

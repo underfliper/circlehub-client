@@ -15,6 +15,19 @@ class PostService {
     }
   }
 
+  async GetSuggested() {
+    try {
+      const { data: posts } = await $fetch.get<Array<PostData>>(
+        '/post/suggested',
+        true,
+      )
+
+      return posts
+    } catch (error) {
+      throw error
+    }
+  }
+
   async AddLike(postId: number) {
     try {
       const { data } = await $fetch.post<boolean>(`/like/add/${postId}`, true)
