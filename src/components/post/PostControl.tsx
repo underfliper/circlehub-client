@@ -1,19 +1,23 @@
 'use client'
-import cn from 'classnames'
 import React, { ButtonHTMLAttributes, FC } from 'react'
+import cn from 'classnames'
 
-interface PostControlProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
+interface PostControlProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  isActive?: boolean
+}
 
 const PostControl: FC<PostControlProps> = ({
   className,
+  isActive,
   onClick,
   ...props
 }) => {
   const baseStyles =
-    'flex gap-1 p-1 items-center text-sm font-semibold text-txt-500 rounded-lg transition-colors easy-in-out'
+    'flex gap-1 p-1 items-center text-sm font-semibold rounded-lg transition-colors easy-in-out'
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation()
+
     onClick && onClick(event)
   }
 

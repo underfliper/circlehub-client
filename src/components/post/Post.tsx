@@ -7,6 +7,7 @@ import { PostData } from '@/types/post.type'
 import { useRouter } from 'next/navigation'
 import PostControl from './PostControl'
 import { Bookmark, Heart, MessageCircle, Repeat } from 'lucide-react'
+import PostControls from './PostControls'
 
 interface PostProps {
   data: PostData
@@ -48,7 +49,7 @@ const getPublishDate = (date: string) => {
 
 const Post: FC<PostProps> = ({ data }) => {
   const router = useRouter()
-  const { id, author, createdAt, content, attachments, _count } = data
+  const { id, author, createdAt, content, attachments, _count, controls } = data
   const { id: authorId, profile } = author
 
   const handleClickPost = () => {
@@ -57,7 +58,6 @@ const Post: FC<PostProps> = ({ data }) => {
 
   const handleClickHashtag = (event: React.MouseEvent<HTMLSpanElement>) => {
     event.stopPropagation()
-    // Добавьте здесь логику для перехода по хэштегу
     console.log('Hashtag clicked')
   }
 
@@ -99,35 +99,7 @@ const Post: FC<PostProps> = ({ data }) => {
           height={600}
         />
       </div>
-      <div className="flex justify-between">
-        <div className="flex gap-4">
-          <PostControl
-            title="Like"
-            className="hover:text-rose-500 hover:bg-rose-500/10">
-            <Heart size={18} />
-            <span>{_count.likes}</span>
-          </PostControl>
-          <PostControl
-            title="Comment"
-            className="hover:text-primary-500 hover:bg-primary-500/10">
-            <MessageCircle size={18} />
-            <span>{_count.comments}</span>
-          </PostControl>
-          <PostControl
-            title="Repost"
-            className="hover:text-green-500 hover:bg-green-500/10">
-            <Repeat size={18} />
-            <span>{_count.reposts}</span>
-          </PostControl>
-        </div>
-        <div>
-          <PostControl
-            title="Bookmark"
-            className="hover:text-yellow-500 hover:bg-yellow-500/10">
-            <Bookmark size={18} />
-          </PostControl>
-        </div>
-      </div>
+      <PostControls postId={id} _count={_count} controlsStatus={controls} />
     </div>
   )
 }

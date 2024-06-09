@@ -8,6 +8,10 @@ export interface PostData {
   author: UserInfoShort
   attachments: Array<Attachment>
   _count: PostCounts
+  controls: {
+    isLiked: boolean
+    isReposted: boolean
+  }
 }
 
 enum AttachmentType {
