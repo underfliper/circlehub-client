@@ -30,3 +30,10 @@ interface PostCounts {
   reposts: number
   comments: number
 }
+
+export interface PostComment {
+  id: number
+  text: string
+  createdAt: string
+  user: UserInfoShort
+}

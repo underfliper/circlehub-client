@@ -1,7 +1,30 @@
 import { $fetch } from '@/lib/fetch/customFetch'
-import { PostData } from '@/types/post.type'
+import { PostComment, PostData } from '@/types/post.type'
 
 class PostService {
+  async GetPost(postId: number) {
+    try {
+      const { data: post } = await $fetch.get<PostData>(`/post/${postId}`, true)
+
+      return post
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async GetPostComments(postId: number) {
+    try {
+      const { data: comments } = await $fetch.get<Array<PostComment>>(
+        `/post/${postId}/comments`,
+        true,
+      )
+
+      return comments
+    } catch (error) {
+      throw error
+    }
+  }
+
   async GetFollowing() {
     try {
       const { data: posts } = await $fetch.get<Array<PostData>>(

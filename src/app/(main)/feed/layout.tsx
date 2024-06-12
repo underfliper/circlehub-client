@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import FeedNavbar from '@/components/layout/feedNavbar/FeedNavbar'
 
 export const metadata: Metadata = {
-  title: 'Feed | CircleHub',
+  title: 'Feed',
 }
 
 export default function FeedLayout({

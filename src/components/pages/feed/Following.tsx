@@ -1,6 +1,6 @@
+import React from 'react'
 import Post from '@/components/post/Post'
 import { postService } from '@/services/post/post.service'
-import React from 'react'
 
 const Following = async () => {
   const posts = await postService.GetFollowing()
@@ -8,7 +8,11 @@ const Following = async () => {
   return (
     <div className="flex flex-col gap-4">
       {posts.map((post) => (
-        <Post data={post} key={`${post.author.username}${post.id}`} />
+        <Post
+          data={post}
+          redirectOnClickPost
+          key={`${post.author.username}${post.id}`}
+        />
       ))}
     </div>
   )
