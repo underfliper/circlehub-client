@@ -1,9 +1,11 @@
-import { Bell, Bookmark, CalendarClock, Home, User, Image } from 'lucide-react'
-import Link from 'next/link'
+'use client'
 import React from 'react'
+import { Bell, Bookmark, CalendarClock, Home, User, Image } from 'lucide-react'
 import NavbarItem from './NavbarItem'
+import { useSession } from 'next-auth/react'
 
 const Navbar = () => {
+  const { data } = useSession()
   return (
     <div className="flex flex-col gap-4 w-full p-4 bg-background-50 rounded-xl">
       <h2 className="font-semibold text-xl text-txt-950">Navigation</h2>
@@ -14,7 +16,7 @@ const Navbar = () => {
             <Home size={24} />
             Feed
           </NavbarItem>
-          <NavbarItem url="/profile">
+          <NavbarItem url={`/profile/${data?.user.id}`}>
             <User size={24} />
             Profile
           </NavbarItem>

@@ -45,7 +45,7 @@ const Post: FC<PostProps> = ({ data, redirectOnClickPost }) => {
         }
       />
       <p>
-        {content.split(' ').map((word, index) => {
+        {content.split(/[\s,.!?]+/).map((word, index) => {
           if (word.startsWith('#')) {
             return (
               <span
@@ -63,7 +63,6 @@ const Post: FC<PostProps> = ({ data, redirectOnClickPost }) => {
         <Image
           src={attachments[0].url}
           alt={content}
-          className="w-full"
           width={600}
           height={600}
         />

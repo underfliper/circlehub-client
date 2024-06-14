@@ -1,4 +1,5 @@
 import { $fetch } from '@/lib/fetch/customFetch'
+import { PostData } from '@/types/post.type'
 import { FollowUnfollow, UserInfo, UserInfoShort } from '@/types/user.type'
 
 class UserService {
@@ -23,6 +24,45 @@ class UserService {
       )
 
       return suggested
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async GetAllPosts(userId: number) {
+    try {
+      const posts = await $fetch.get<Array<PostData>>(
+        `/user/${userId}/posts`,
+        true,
+      )
+
+      return posts
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async GetReposts(userId: number) {
+    try {
+      const posts = await $fetch.get<Array<PostData>>(
+        `/user/${userId}/reposts`,
+        true,
+      )
+
+      return posts
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async GetLikes(userId: number) {
+    try {
+      const posts = await $fetch.get<Array<PostData>>(
+        `/user/${userId}/likes`,
+        true,
+      )
+
+      return posts
     } catch (error) {
       throw error
     }
