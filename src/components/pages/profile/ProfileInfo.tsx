@@ -4,6 +4,7 @@ import { useSession } from 'next-auth/react'
 import Image from 'next/image'
 import { UserInfo } from '@/types/user.type'
 import FollowButton from '@/components/followButton/FollowButton'
+import { getMonthYear } from '@/utils/formatDate'
 
 interface ProfileInfoProps {
   data: UserInfo
@@ -60,9 +61,9 @@ const ProfileInfo: FC<ProfileInfoProps> = ({ data }) => {
               <span className="text-sm text-txt-700">Following</span>
             </div>
           </div>
-          <span className="text-sm font-medium text-txt-500">{`Registered since ${
-            months[registerDate.getMonth()]
-          } ${registerDate.getFullYear()}`}</span>
+          <span className="text-sm font-medium text-txt-500">{`Registered since ${getMonthYear(
+            createdAt,
+          )}`}</span>
         </div>
         <div>
           {session?.user.id === id ? (

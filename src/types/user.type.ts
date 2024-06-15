@@ -15,8 +15,8 @@ export interface UserProfile {
 export interface UserInfo {
   id: number
   username: string
-  createdAt: Date
-  updatedAt: Date
+  createdAt: string
+  updatedAt: string
   profile: UserProfile
   _count: {
     following: number
@@ -39,4 +39,11 @@ export interface UserInfoShort {
 
 export interface FollowUnfollow {
   followStatus: boolean
+}
+
+export interface Follow extends UserInfoShort {
+  state: {
+    follow: boolean
+    createdAt: string
+  }
 }

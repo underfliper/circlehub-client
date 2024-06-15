@@ -14,7 +14,8 @@ const Username: FC<UsernameProps> = ({ username }) => {
   return (
     <button
       className="flex gap-1 items-center text-primary-600 text-xs font-medium w-max"
-      onClick={copy}>
+      onClick={copy}
+      title="Copy to clipboard">
       <span>{`@${username}`}</span>
       <Copy size={12} />
     </button>

@@ -5,7 +5,7 @@ import Image from 'next/image'
 import UserCard from '../userCard/UserCard'
 import PostControls from './PostControls'
 import { PostData } from '@/types/post.type'
-import { getBeautifulDate } from '@/utils/getBeautifulDate'
+import { getBeautifulDate } from '@/utils/formatDate'
 
 interface PostProps {
   data: PostData

@@ -1,3 +1,5 @@
+import { date } from 'zod'
+
 const months: { [key: number]: string } = {
   0: 'Jan',
   1: 'Feb',
@@ -32,4 +34,10 @@ export const getBeautifulDate = (date: string) => {
   }`
 
   return `${beautifulDay} at ${formatTime(beautifulDate)}`
+}
+
+export const getMonthYear = (date: string) => {
+  const beautifulDate = new Date(date)
+
+  return `${months[beautifulDate.getMonth()]} ${beautifulDate.getFullYear()}`
 }

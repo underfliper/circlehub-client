@@ -25,6 +25,7 @@ const UserStatsCard: FC = async () => {
           avatar={profile.avatar}
           name={`${profile.firstName} ${profile.lastName}`}
           content={<Username username={username} />}
+          lightBackground
         />
         <div className="flex w-full">
           <Link
@@ -38,7 +39,7 @@ const UserStatsCard: FC = async () => {
             </span>
           </Link>
           <Link
-            href={`/followers/${user.id}`}
+            href={`/profile/${user.id}/followers`}
             className="flex flex-col py-1 w-1/3 items-center rounded-lg hover:bg-background-200">
             <span className="block w-max text-txt-950 font-semibold">
               {_count.followers}
@@ -48,7 +49,7 @@ const UserStatsCard: FC = async () => {
             </span>
           </Link>
           <Link
-            href={`/following/${user.id}`}
+            href={`/profile/${user.id}/following`}
             className="flex flex-col py-1 w-1/3 items-center rounded-lg hover:bg-background-200">
             <span className="block w-max text-txt-950 font-semibold">
               {_count.following}

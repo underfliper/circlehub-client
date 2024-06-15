@@ -1,6 +1,11 @@
 import { $fetch } from '@/lib/fetch/customFetch'
 import { PostData } from '@/types/post.type'
-import { FollowUnfollow, UserInfo, UserInfoShort } from '@/types/user.type'
+import {
+  Follow,
+  FollowUnfollow,
+  UserInfo,
+  UserInfoShort,
+} from '@/types/user.type'
 
 class UserService {
   async GetProfile(userId: number) {
@@ -63,6 +68,32 @@ class UserService {
       )
 
       return posts
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async GetFollowers(userId: number) {
+    try {
+      const followers = await $fetch.get<Array<Follow>>(
+        `/user/${userId}/followers`,
+        true,
+      )
+
+      return followers
+    } catch (error) {
+      throw error
+    }
+  }
+
+  async GetFollowing(userId: number) {
+    try {
+      const following = await $fetch.get<Array<Follow>>(
+        `/user/${userId}/following`,
+        true,
+      )
+
+      return following
     } catch (error) {
       throw error
     }

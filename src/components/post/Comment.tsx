@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Ellipsis } from 'lucide-react'
 import { PostComment } from '@/types/post.type'
-import { getBeautifulDate } from '@/utils/getBeautifulDate'
+import { getBeautifulDate } from '@/utils/formatDate'
 
 interface CommentProps {
   comment: PostComment

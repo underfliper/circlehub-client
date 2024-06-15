@@ -9,9 +9,16 @@ interface UserCardProps {
   avatar?: string
   name: string
   content?: React.ReactNode
+  lightBackground?: boolean
 }
 
-const UserCard: FC<UserCardProps> = ({ id, avatar, name, content }) => {
+const UserCard: FC<UserCardProps> = ({
+  id,
+  avatar,
+  name,
+  content,
+  lightBackground = false,
+}) => {
   const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.stopPropagation()
   }
@@ -20,7 +27,9 @@ const UserCard: FC<UserCardProps> = ({ id, avatar, name, content }) => {
     <div className="flex gap-2">
       <Link
         href={`/profile/${id}`}
-        className="flex-shrink-0 bg-background-50 rounded-full w-10 h-10 text-txt-500 overflow-hidden"
+        className={`flex-shrink-0  rounded-full w-10 h-10 text-txt-500 overflow-hidden ${
+          lightBackground ? 'bg-background-50' : 'bg-background-100'
+        }`}
         onClick={handleClick}>
         {avatar ? (
           <Image src={avatar} alt={name} width={40} height={40} />

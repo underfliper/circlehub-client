@@ -5,13 +5,17 @@ import { userService } from '@/services/user/user.service'
 
 interface FollowButtonProps {
   followId: number
+  isActive?: boolean
 }
 
-const FollowButton: FC<FollowButtonProps> = ({ followId }) => {
-  const [isFollow, setIsFollow] = useState(false)
+const FollowButton: FC<FollowButtonProps> = ({
+  followId,
+  isActive = false,
+}) => {
+  const [isFollow, setIsFollow] = useState(isActive)
 
   const baseStyles =
-    'px-3 py-1 h-max rounded-md font-medium bg-primary-200 text-primary-600 transition-colors ease-in-out'
+    'px-3 py-1 h-max min-w-24 rounded-md font-medium bg-primary-200 text-primary-600 transition-colors ease-in-out'
   const followStyles = 'hover:bg-primary-600 hover:text-txt-50'
   const unfollowStyles =
     'bg-red-100 text-red-500 hover:bg-red-500 hover:text-txt-50'
