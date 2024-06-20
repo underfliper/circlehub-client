@@ -10,7 +10,7 @@ const ProfilePosts: FC<ProfilePostsProps> = ({ data }) => {
   return (
     <div className="flex flex-col gap-4">
       {data.map((post) => (
-        <Post data={post} redirectOnClickPost />
+        <Post data={post} redirectOnClickPost key={`postid_${post.id}`} />
       ))}
     </div>
   )
