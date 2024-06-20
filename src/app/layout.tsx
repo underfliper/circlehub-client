@@ -28,7 +28,7 @@ export default function RootLayout({
       <body
         className={cn(
           inter.className,
-          'flex flex-col h-dvh bg-background-100 text-txt-950',
+          'relative flex flex-col h-dvh bg-background-100 text-txt-950',
         )}>
         <Providers>
           <Header />

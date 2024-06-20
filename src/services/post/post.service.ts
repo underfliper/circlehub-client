@@ -96,6 +96,20 @@ class PostService {
       throw error
     }
   }
+
+  async AddComment(postId: number, text: string) {
+    try {
+      const { data } = await $fetch.post<PostComment>(
+        `/comment/add/${postId}`,
+        true,
+        { text: text },
+      )
+
+      return data
+    } catch (error) {
+      throw error
+    }
+  }
 }
 
 export const postService = new PostService()
