@@ -20,10 +20,10 @@ const ProfileNavbarItem: FC<ProfileNavbarItemProps> = ({ url, children }) => {
   return (
     <li
       className={cn(
-        'px-4 py-1 rounded-lg cursor-pointer text-sm font-medium hover:bg-primary-200 hover:text-primary-600 transition ease-in-out',
+        'rounded-lg cursor-pointer text-sm font-medium overflow-hidden hover:bg-primary-200 hover:text-primary-600 transition ease-in-out',
         { 'bg-primary-200 text-primary-600': isUrlActive(pathname, url) },
       )}>
-      <Link className="block" href={url}>
+      <Link className="block px-4 py-1" href={url}>
         {children}
       </Link>
     </li>

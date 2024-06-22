@@ -14,7 +14,7 @@ export default async function ProfileBaseLayout({
   return (
     <div className="flex flex-col gap-4 pb-4">
       <ProfileInfo data={userProfile} />
-      <ProfileNavbar userId={userProfile.id} />
+      <ProfileNavbar userId={userProfile.id} counts={userProfile._count} />
       {children}
     </div>
   )

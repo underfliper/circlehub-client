@@ -1,26 +1,24 @@
-import Link from 'next/link'
 import React, { FC } from 'react'
 import ProfileNavbarItem from './ProfileNavbarItem'
+import { UserCounts } from '@/types/user.type'
 
 interface ProfileNavbarProps {
   userId: number
+  counts: UserCounts
 }
 
-const ProfileNavbar: FC<ProfileNavbarProps> = ({ userId }) => {
+const ProfileNavbar: FC<ProfileNavbarProps> = ({ userId, counts }) => {
   return (
     <nav className="p-4 bg-background-50 rounded-xl">
       <ul className="flex gap-4">
         <ProfileNavbarItem url={`/profile/${userId}`}>
-          All Posts
+          {`All Posts ${counts.posts}`}
         </ProfileNavbarItem>
         <ProfileNavbarItem url={`/profile/${userId}/reposts`}>
-          Reposts
+          {`Reposts ${counts.reposts}`}
         </ProfileNavbarItem>
         <ProfileNavbarItem url={`/profile/${userId}/likes`}>
-          Likes
-        </ProfileNavbarItem>
-        <ProfileNavbarItem url={`/profile/${userId}/media`}>
-          Media
+          {`Likes ${counts.likes}`}
         </ProfileNavbarItem>
       </ul>
     </nav>

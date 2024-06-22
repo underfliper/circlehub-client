@@ -12,17 +12,21 @@ export interface UserProfile {
   bio?: string
 }
 
+export interface UserCounts {
+  following: number
+  followers: number
+  posts: number
+  reposts: number
+  likes: number
+}
+
 export interface UserInfo {
   id: number
   username: string
   createdAt: string
   updatedAt: string
   profile: UserProfile
-  _count: {
-    following: number
-    followers: number
-    posts: number
-  }
+  _count: UserCounts
 }
 
 export interface UserProfileShort {
