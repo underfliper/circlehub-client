@@ -10,21 +10,6 @@ interface ProfileInfoProps {
   data: UserInfo
 }
 
-const months: { [key: number]: string } = {
-  0: 'January',
-  1: 'February',
-  2: 'March',
-  3: 'April',
-  4: 'May',
-  5: 'June',
-  6: 'July',
-  7: 'August',
-  8: 'September',
-  9: 'October',
-  10: 'November',
-  11: 'December',
-}
-
 const ProfileInfo: FC<ProfileInfoProps> = ({ data }) => {
   const { data: session } = useSession()
   const { id, username, createdAt, profile, _count } = data
@@ -67,7 +52,9 @@ const ProfileInfo: FC<ProfileInfoProps> = ({ data }) => {
         </div>
         <div>
           {session?.user.id === id ? (
-            <div></div>
+            <button className="px-3 py-1 h-max min-w-24 rounded-md font-medium bg-primary-200 text-primary-600 transition-colors ease-in-out hover:bg-primary-600 hover:text-txt-50">
+              Edit
+            </button>
           ) : (
             <FollowButton followId={id} />
           )}
