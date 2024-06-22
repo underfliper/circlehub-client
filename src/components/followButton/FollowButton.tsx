@@ -1,5 +1,5 @@
 'use client'
-import React, { FC, useCallback, useState } from 'react'
+import React, { FC, useCallback, useEffect, useState } from 'react'
 import cn from 'classnames'
 import { userService } from '@/services/user/user.service'
 
@@ -32,6 +32,10 @@ const FollowButton: FC<FollowButtonProps> = ({
         setIsFollow(data.followStatus)
       })
   }, [followId, isFollow])
+
+  useEffect(() => {
+    userService.CheckFollow(followId).then((value) => setIsFollow(value))
+  }, [])
 
   return (
     <button

@@ -4,9 +4,10 @@ import React, { FC } from 'react'
 
 interface ProfilePostsProps {
   data: Array<PostData>
+  userId: number
 }
 
-const ProfilePosts: FC<ProfilePostsProps> = ({ data }) => {
+const ProfilePosts: FC<ProfilePostsProps> = ({ data, userId }) => {
   return (
     <div className="flex flex-col gap-4">
       {data.map((post) => (

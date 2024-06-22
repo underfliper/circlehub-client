@@ -1,6 +1,11 @@
+import { Metadata } from 'next'
 import Breadcrumbs from '@/components/breadcrumbs/Breadcrumbs'
 import FollowList from '@/components/pages/follow/FollowList'
 import { userService } from '@/services/user/user.service'
+
+export const metadata: Metadata = {
+  title: 'Followers',
+}
 
 export default async function FollowersPage({
   params,

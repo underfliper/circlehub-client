@@ -99,6 +99,19 @@ class UserService {
     }
   }
 
+  async CheckFollow(userId: number) {
+    try {
+      const { data: isFollow } = await $fetch.get<boolean>(
+        `/user/${userId}/checkFollow`,
+        true,
+      )
+
+      return isFollow
+    } catch (error) {
+      throw error
+    }
+  }
+
   async Follow(followId: number) {
     try {
       const follow = await $fetch.post<FollowUnfollow>('/user/follow', true, {
