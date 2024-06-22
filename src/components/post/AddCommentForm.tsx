@@ -10,6 +10,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { postService } from '@/services/post/post.service'
 import { LoaderCircle } from 'lucide-react'
 import Modal from '../modal/Modal'
+import { useRouter } from 'next/navigation'
 
 interface AddCommentFormProps {
   postId: number
@@ -80,11 +81,22 @@ const AddCommentForm: FC<AddCommentFormProps> = ({ postId, dispatch }) => {
         </button>
       </form>
       <Modal
-        title="Potential spam"
+        title="Potential Spam"
         className="w-96"
         isOpen={isModalOpen}
         setOpen={setModalOpen}>
         <p>{errors.text?.message}</p>
+        <span className="w-full h-[2px] block bg-background-100"></span>
+        <div className="flex gap-4 justify-end">
+          <button className="px-3 py-1 min-w-20 rounded-lg font-medium bg-accent-200 text-primary-600 hover:bg-primary-600 hover:text-txt-50 transition-colors easy-in-out">
+            Appeal
+          </button>
+          <button
+            className="px-3 py-1 min-w-20 rounded-lg font-medium bg-red-100 text-red-500 hover:bg-red-500 hover:text-txt-50 transition-colors easy-in-out"
+            onClick={() => setModalOpen(false)}>
+            Close
+          </button>
+        </div>
       </Modal>
     </div>
   )
